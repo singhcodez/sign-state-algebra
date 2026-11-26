@@ -3,6 +3,7 @@ message: "If you use this software or paper, please cite it using the metadata b
 type: software
 title: "Sign-State Algebra (⊖, ⊕, ⊗): A Visual Reformulation and Dual-Basis Computational Architecture for Commutative Tessarines"
 version: 1.0.0
+doi: "10.5281/zenodo.24563087"
 date-released: 2026-11-26
 license: MIT
 authors:
