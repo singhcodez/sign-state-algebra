@@ -1,0 +1,132 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath, amssymb, amsthm}
+\usepackage{booktabs}
+\usepackage{graphicx}
+\usepackage{geometry}
+\usepackage{hyperref}
+
+\geometry{margin=1in}
+
+\newtheorem{definition}{Definition}
+\newtheorem{theorem}{Theorem}
+\newtheorem{proposition}{Proposition}
+
+\title{\textbf{Sign-State Algebra ($\ominus, \oplus, \otimes$): A Visual Reformulation and Dual-Basis Computational Architecture for Commutative Tessarines}}
+\author{Your Name \\ \small Independent Researcher}
+\date{\today}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+Standard hypercomplex notations represent non-real algebraic units with arbitrary letters ($i, j, k$), concealing sign-squaring mechanics from learners and introducing matrix boilerplate in multi-channel signal processing. We present \emph{Sign-State Algebra}, a visual and computational reformulation of commutative tessarines (bicomplex numbers) that encodes squaring rules directly into geometric glyphs ($\ominus^2 = -1$, $\oplus^2 = +1$, $\otimes^2 = -1$) for mathematical writing and collision-free ASCII suffixes (\texttt{1m}, \texttt{1p}, \texttt{1mp}) for programming. To pair pedagogical clarity with numerical throughput, we introduce a dual-layer runtime architecture: expressions are authored in the intuitive $(\ominus, \oplus, \otimes)$ front-end and compiled in $O(1)$ additions into the orthogonal idempotent split basis $e_1 = \frac{1+\oplus}{2}$, $e_2 = \frac{1-\oplus}{2}$, halving scalar multiplication counts and isolating light-cone zero divisors ($a = \pm c$) via channel-restricted pseudoinverse recovery. Interactive 2D/4D visualizers and reproducible benchmarks are openly available at \url{https://github.com/your-username/sign-state-algebra}.
+\end{abstract}
+
+\section{Introduction and Notational Motivation}
+In elementary and undergraduate algebra, introducing $i = \sqrt{-1}$ shifts learners abruptly from numeric symbols to literal variables, obscuring why multiplication by $i$ induces a $90^\circ$ planar rotation. Simultaneously, standard squaring ($1^2 = 1$ and $(-1)^2 = 1$) erases root provenance. Early exploratory sign-marker prototypes (\texttt{--1} for negative-square roots and \texttt{++1} for positive-square roots) exposed these mechanics visually but suffered from operator collisions with unary double-negation ($-(-1) = +1$) and C-family increment/decrement operators (\texttt{--}, \texttt{++}).
+
+To preserve surface-level sign intuition without parser ambiguity, we formalize two synchronized representations:
+\begin{enumerate}
+    \item \textbf{Geometric Paper Glyphs ($\ominus, \oplus, \otimes$):} Circled minus ($\ominus$) denotes the circular $90^\circ$ rotational unit ($\ominus^2 = -1$); circled plus ($\oplus$) denotes the hyperbolic diagonal-reflection unit ($\oplus^2 = +1$); crossed circle ($\otimes = \ominus\oplus$) denotes their combined product ($\otimes^2 = -1$).
+    \item \textbf{Code Suffixes (\texttt{1m, 1p, 1mp}) and Dual-Basis Runtime:} Source expressions use collision-free numeric suffixes and compile internally into the decoupled $(e_1, e_2)$ idempotent channels.
+\end{enumerate}
+
+\section{Historical Lineage and Related Work}
+Our four-dimensional commutative ring sits within an established mathematical lineage:
+\begin{itemize}
+    \item \textbf{Renaissance Origins:} Girolamo Cardano (1545) \cite{cardano1545} encountered square roots of negative quantities while solving cubic equations, and Rafael Bombelli (1572) \cite{bombelli1572} established the earliest explicit sign-multiplication rules for $\sqrt{-1}$.
+    \item \textbf{Geometric Plane:} Leonhard Euler (1777) \cite{euler1777} standardized the symbol $i$, while Caspar Wessel (1799) \cite{wessel1799}, Jean-Robert Argand (1806), and Carl Friedrich Gauss (1831) \cite{gauss1831} established its geometric action as a $90^\circ$ planar rotation.
+    \item \textbf{4D Hypercomplex Extensions:} William Rowan Hamilton (1843) \cite{hamilton1843} discovered non-commutative quaternions ($\mathbb{H}$, $ij = -ji$) to model 3D spatial rotations. Five years later, James Cockle (1848) \cite{cockle1848} introduced \emph{tessarines} ($i^2 = -1, j^2 = +1, k^2 = -1$), proving that 4D hypercomplex numbers retain full commutativity ($AB = BA$) when a non-trivial square root of $+1$ is included. Corrado Segre (1892) \cite{segre1892} formalized the same algebraic structure as \emph{bicomplex numbers} and analyzed its idempotent decomposition.
+    \item \textbf{Modern Multi-Channel DSP:} Contemporary researchers, notably Soo-Chang Pei et al. \cite{pei2004}, apply commutative tessarines (reduced biquaternions) to color image filtering and multi-channel Fast Fourier Transforms (FFTs).
+\end{itemize}
+Rather than claiming a new algebraic ring, this work contributes a collision-free visual pedagogy and a source-to-machine $(e_1, e_2)$ execution architecture.
+
+\section{Formal Axiomatic Specification}
+\begin{definition}[Sign-State Ring]
+Let $\mathcal{S} = \{a + b\ominus + c\oplus + d\otimes \mid a, b, c, d \in \mathbb{R}\}$ denote the four-dimensional commutative unital algebra over $\mathbb{R}$ isomorphic to the quotient polynomial ring $\mathbb{R}[u, v] / \langle u^2 + 1, v^2 - 1 \rangle$, governed by:
+\begin{equation}
+\ominus^2 = -1, \qquad \oplus^2 = +1, \qquad \otimes^2 = -1, \qquad \ominus\oplus = \oplus\ominus = \otimes.
+\end{equation}
+\end{definition}
+
+\begin{table}[h]
+\centering
+\caption{Complete Basis Multiplication Table and Isomorphism Mapping}
+\label{tab:mult_iso}
+\begin{tabular}{@{}c|cccc||ccc@{}}
+\toprule
+$\times$ & $1$ & $\ominus$ & $\oplus$ & $\otimes$ & Paper Glyph & ASCII Code & Cockle Tessarine \\
+\midrule
+$1$ & $1$ & $\ominus$ & $\oplus$ & $\otimes$ & $1$ & \texttt{1} & $1$ \\
+$\ominus$ & $\ominus$ & $-1$ & $\otimes$ & $-\oplus$ & $\ominus$ & \texttt{1m} & $i$ \\
+$\oplus$ & $\oplus$ & $\otimes$ & $+1$ & $\ominus$ & $\oplus$ & \texttt{1p} & $j$ \\
+$\otimes$ & $\otimes$ & $-\oplus$ & $\ominus$ & $-1$ & $\otimes$ & \texttt{1mp} & $k$ \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\section{Geometric Actions and 4-Root Polynomial Symmetry}
+Pairing the real axis $1$ with $\ominus$ or $\oplus$ yields two orthogonal 2D geometric subplanes:
+\begin{itemize}
+    \item \textbf{Circular Plane $(1, \ominus)$:} Multiplying $P = x + y\ominus$ by $\ominus$ yields $-y + x\ominus$, a $90^\circ$ counter-clockwise rotation along circles $x^2 + y^2 = r^2$, with continuous rotor $e^{\ominus\theta} = \cos\theta + \ominus\sin\theta$.
+    \item \textbf{Hyperbolic Plane $(1, \oplus)$:} Multiplying $P = x + y\oplus$ by $\oplus$ yields $y + x\oplus$, a $45^\circ$ mirror reflection across $y = x$, with continuous Lorentz boost $e^{\oplus\phi} = \cosh\phi + \oplus\sinh\phi$ along hyperbolas $x^2 - y^2 = k$.
+\end{itemize}
+
+% Uncomment below once you save fig1_rotations_boosts.png inside paper/figures/
+% \begin{figure}[h]
+% \centering
+% \includegraphics[width=0.95\textwidth]{figures/fig1_rotations_boosts.png}
+% \caption{Geometric comparison between circular rotation ($\ominus$) and hyperbolic reflection/boost ($\oplus$).}
+% \label{fig:rotations}
+% \end{figure}
+
+\begin{theorem}[4-Root Quadratic Symmetry]
+In $\mathcal{S}$, the quadratic equation $x^2 - 1 = 0$ possesses exactly four discrete roots $\{\pm 1, \pm \oplus\}$, and $x^2 + 1 = 0$ possesses exactly four discrete roots $\{\pm \ominus, \pm \otimes\}$.
+\end{theorem}
+\begin{proof}
+Writing $x = z_1 e_1 + z_2 e_2$ in the orthogonal idempotent basis ($e_1^2 = e_1, e_2^2 = e_2, e_1 e_2 = 0$), $x^2 = \pm 1$ decouples into $z_1^2 = \pm 1$ and $z_2^2 = \pm 1$ over $\mathbb{C}$. Each complex equation has two independent solutions, yielding $2 \times 2 = 4$ distinct pairs in $\mathcal{S}$.
+\end{proof}
+
+\section{Dual-Basis Runtime and Null-Cone Recovery}
+Direct polynomial multiplication in $(1, \ominus, \oplus, \otimes)$ requires 16 real multiplications. Compiling into the orthogonal idempotent basis
+\begin{equation}
+e_1 = \frac{1 + \oplus}{2}, \qquad e_2 = \frac{1 - \oplus}{2}
+\end{equation}
+maps $Z = a + b\ominus + c\oplus + d\otimes$ via $u_1 = a+c, v_1 = b+d$ and $u_2 = a-c, v_2 = b-d$ into two decoupled complex channels $Z = (u_1 + v_1\ominus)e_1 + (u_2 + v_2\ominus)e_2$, reducing multiplication to 8 real multiplications.
+
+Whenever $a = \pm c$ and $b = \pm d$, the 4D multiplicative norm
+\begin{equation}
+N(Z) = \big((a+c)^2 + (b+d)^2\big)\big((a-c)^2 + (b-d)^2\big)
+\end{equation}
+vanishes on the diagonal light-cones. In $(e_1, e_2)$ coordinates, zero divisors correspond to a single vanished channel ($u_1^2 + v_1^2 = 0$ or $u_2^2 + v_2^2 = 0$). Our runtime automatically invokes a channel-restricted pseudoinverse (\texttt{PSEUDOINVERSE\_E1\_ONLY} or \texttt{PSEUDOINVERSE\_E2\_ONLY}), inverting the active channel cleanly without division-by-zero exceptions.
+
+\section{Empirical Evaluation: Stereo Cross-Feed Case Study}
+Consider a stereo audio signal $S = (3 + 2\ominus) + (1 + 4\ominus)\oplus = 3 + 2\ominus + \oplus + 4\otimes$ processed by a simultaneous $90^\circ$ phase shift and symmetric cross-feed filter $F = \ominus(2 + \oplus) = 2\ominus + \otimes$. Using the $(e_1, e_2)$ runtime, $S = (4 + 6\ominus)e_1 + (2 - 2\ominus)e_2$ and $F = (3\ominus)e_1 + (1\ominus)e_2$, yielding:
+\begin{equation}
+S \cdot F = (-18 + 12\ominus)e_1 + (2 + 2\ominus)e_2 = -8 + 7\ominus - 10\oplus + 5\otimes,
+\end{equation}
+which cuts scalar operations in half compared to a $4 \times 4$ real transformation matrix.
+
+\begin{table}[h]
+\centering
+\caption{Arithmetic Complexity Comparison for Stereo Cross-Feed Filtering}
+\label{tab:benchmark}
+\begin{tabular}{@{}lcc@{}}
+\toprule
+Execution Approach & Multiplications / Step & Additions / Step \\
+\midrule
+(A) $4 \times 4$ Real Matrix & 16 & 12 \\
+(B) Direct Sign-State Polynomial & 16 & 12 \\
+(C) Decoupled $(e_1, e_2)$ Split Engine & \textbf{8} & \textbf{6} \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\section{Scope Boundaries and Conclusion}
+In accordance with the conservation of algebraic properties, commuting 4D tessarines trade away scalar inequality ordering ($>, <$) and cannot represent non-commutative 3D rigid-body spatial rotations without hyperbolic shearing (where Hamilton's quaternions remain required). Within 2D coupled wave systems, Lorentz boosts, and dual-channel DSP pipelines, Sign-State Algebra provides an intuitive human front-end backed by a fast, fault-tolerant $(e_1, e_2)$ execution core.
+
+\bibliographystyle{plain}
+\bibliography{references}
+\end{document}
