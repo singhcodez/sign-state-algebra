@@ -1,0 +1,28 @@
+cff-version: 1.2.0
+message: "If you use this software or paper, please cite it using the metadata below."
+type: software
+title: "Sign-State Algebra (⊖, ⊕, ⊗): A Visual Reformulation and Dual-Basis Computational Architecture for Commutative Tessarines"
+version: 1.0.0
+date-released: 2026-11-26
+license: MIT
+authors:
+  - family-names: Jasnoor Singh
+    given-names: Jasnoor Singh 
+repository-code: "https://github.com/singhcodez/sign-state-algebra"
+url: "https://singhcodez.github.io/sign-state-algebra/"
+abstract: >-
+  Sign-State Algebra is a visual and computational reformulation of commutative
+  tessarines (bicomplex numbers) that encodes squaring rules directly into
+  geometric glyphs (⊖² = -1, ⊕² = +1, ⊗² = -1) for mathematical writing and
+  collision-free ASCII suffixes (1m, 1p, 1mp) for programming. Expressions
+  compile in O(1) additions into the orthogonal idempotent split basis
+  e1 = (1 + ⊕)/2, e2 = (1 - ⊕)/2, halving scalar multiplications and resolving
+  light-cone zero divisors via channel-restricted pseudoinverses.
+keywords:
+  - tessarines
+  - bicomplex-numbers
+  - hypercomplex-algebra
+  - split-complex
+  - sign-state-algebra
+  - digital-signal-processing
+  - mathematics-education
