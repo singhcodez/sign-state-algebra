@@ -87,7 +87,7 @@ If you use this software, visualizer, or manuscript in your research, please cit
 ```bibtex
 @software{sign_state_algebra_2026,
   title   = {Sign-State Algebra ($\ominus, \oplus, \otimes$): A Visual Reformulation and Dual-Basis Computational Architecture for Commutative Tessarines},
-  version = {1.0.2},
+  version = {1.0.0},
   year    = {2026},
   doi     = {10.5281/zenodo.24563087},
   url     = {[https://doi.org/10.5281/zenodo.24563087](https://doi.org/10.5281/zenodo.24563087)}
